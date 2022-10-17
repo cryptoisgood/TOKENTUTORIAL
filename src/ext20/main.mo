@@ -18,16 +18,9 @@ import ExtCore "../motoko/ext/Core";
 import ExtCommon "../motoko/ext/Common";
 import ExtAllowance "../motoko/ext/Allowance";
 
-import Ledger "../motoko/icp/Ledger";
-import LedgerC "../motoko/icp/LedgerCandid";
-import XDR "../motoko/icp/XDR";
 
 actor class erc20_token() = this {
   
-  private let ledger  : Ledger.Interface  = actor(Ledger.CANISTER_ID);
-  private let ledgerC : LedgerC.Interface = actor("rrkah-fqaaa-aaaaa-aaaaq-cai");
-  private let cycles  : XDR.Interface     = actor(XDR.CANISTER_ID);
-
   // Types
   type AccountIdentifier = ExtCore.AccountIdentifier;
   type SubAccount = ExtCore.SubAccount;

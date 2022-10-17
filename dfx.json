@@ -20,11 +20,6 @@
         "dist/tokentutorial_frontend/"
       ],
       "type": "assets"
-    },
-    "ledger": {
-      "type": "custom",
-      "wasm": "ledger.wasm",
-      "candid": "ledger.private.did"
     }
   },
   "defaults": {
