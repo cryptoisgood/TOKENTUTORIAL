@@ -1,5 +1,9 @@
 {
   "canisters": {
+    "ext20": {
+      "main": "src/ext20/main.mo",
+      "type": "motoko"
+    },
     "tokentutorial_backend": {
       "main": "src/tokentutorial_backend/main.mo",
       "type": "motoko"
@@ -16,9 +20,17 @@
         "dist/tokentutorial_frontend/"
       ],
       "type": "assets"
+    },
+    "ledger": {
+      "type": "custom",
+      "wasm": "ledger.wasm",
+      "candid": "ledger.private.did"
     }
   },
   "defaults": {
+    "replica": {
+      "subnet_type":"system"
+    },
     "build": {
       "args": "",
       "packtool": ""
@@ -33,3 +45,4 @@
   },
   "version": 1
 }
+
