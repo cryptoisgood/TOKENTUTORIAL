@@ -120,7 +120,7 @@ actor class erc20_token() = this {
       return false;
   };
 
-  private func ptransfer (owner: AccountIdentifier, spender: AccountIdentifier, receiver: AccountIdentifier, amount: Nat, caller: Principal): TransferResponse {
+  private func ptransfer (owner: AccountIdentifier, receiver: AccountIdentifier, amount: Nat, caller: Principal): TransferResponse {
     switch (_balances.get(owner)) {
       case (?owner_balance) {
         if (owner_balance >= amount) {
@@ -148,11 +148,10 @@ actor class erc20_token() = this {
 
   };
 
-    public shared(msg) func mint(): async TransferResponse {
-    let caller = AID.fromPrincipal(msg.caller, null);
-    let ownerBalance = _balances.get(caller);
+    public shared(msg) func mint(accountId: AccountIdentifier): async TransferResponse {
+    let ownerBalance = _balances.get(accountId);
     if (ownerBalance == null) {
-      return ptransfer(AID.fromPrincipal(principalId(), null), caller, caller, 1000, msg.caller);
+      return ptransfer(AID.fromPrincipal(principalId(), null), accountId, 1000000, msg.caller);
     } else {
      return #err(#Other("Already Minted"));
     };
@@ -166,7 +165,7 @@ actor class erc20_token() = this {
       return #err(#Unauthorized(spender));
     };
 
-    return ptransfer(owner, spender, receiver, request.amount, msg.caller);
+    return ptransfer(owner, receiver, request.amount, msg.caller);
   };
   
   public shared(msg) func approve(request: ApproveRequest) : async () {

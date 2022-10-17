@@ -47,6 +47,7 @@
   ],
   "dependencies": {
     "@dfinity/auth-client": "^0.14.0",
+    "@psychedelic/plug-connect": "^0.1.4",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
     "react": "^18.2.0",
